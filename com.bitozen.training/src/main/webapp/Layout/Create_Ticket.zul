@@ -1,0 +1,91 @@
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.bitozen.training.viewmodel.ticket.TicketVM')"
+            form="@id('fx') @load(vm.ticketDTO) @save(vm.ticketDTO, before='buttonSaveTicket')">
+        <groupbox closable="false" mold="3d">
+            <caption label="Form Create Ticket"/>  
+            <groupbox width="600px">
+                <caption label="Data Ticket" style="font-size:16pt"/>
+                <grid style="border:0">
+                    <columns>
+                        <column width="35%"></column>
+                        <column ></column>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="ID Ticket" />
+                            <textbox width="100%" disabled="false" value="@bind(fx.ticketID)" constraint="no empty : ID Ticket Tidak Boleh Kosong"/>
+                        </row>
+                        <row>
+                            <label value="ID User"/>
+                            <combobox width="100%" readonly="true" model="@load(vm.listUserID)" selectedItem="@bind(fx.userID)" placeholder="- Silahkan Pilih -" constraint="no empty : ID User Tidak Boleh Kosong">
+                                <template name="model" var="items">
+                                    <comboitem label="@load(items)" value="@load(items)"/>
+                                </template>
+                            </combobox>
+                        </row>
+                        <row>
+                            <label value="Jenis Ticket"/>
+                            <cell align="left">
+                                <radiogroup model="@load(vm.listTypeTicket)" selectedItem="@bind(fx.typeTicket)"/>
+                            </cell>
+                        </row>
+                        <row>
+                            <label value="Nama Ticket"/>
+                            <textbox width="100%" disabled="false" value="@bind(fx.tittleTicket)" constraint="no empty : Nama Ticket Tidak Boleh Kosong"/>
+                        </row>
+                        <row>
+                            <label value="Deskripsi Ticket"/>
+                            <textbox rows="4" width="100%" value="@bind(fx.ticketDescription)"/>
+                        </row>
+                        <row>
+                            <label value="Prioritas Ticket"/>
+                            <combobox width="100%" readonly="true" model="@load(vm.listPriorityTicket)" selectedItem="@bind(fx.priority)"  placeholder="- Silahkan Pilih -" >
+                                <template name="model" var="items">
+                                    <comboitem label="@load(items)" value="@load(items)"/>
+                                </template>
+                            </combobox>
+                        </row>
+                        <row>
+                            <label value="Usia Ticket"/>
+                            <intbox width="100%" disabled="false" value="@bind(fx.ageTicket)"/>
+                        </row>
+                        <row>
+                            <label value="Waktu Penyelesaian"/>
+                            <intbox width="100%" disabled="false" value="@bind(fx.timeToResolved)"/>
+                        </row>
+                        <row>
+                            <label value="Status Ticket"/>
+                            <combobox width="100%" model="@load(vm.listStatusTicket)" selectedItem="@bind(fx.statusTicket)" readonly="true" placeholder="- Silahkan Pilih -" constraint="no empty : Status Ticket Tidak Boleh Kosong">
+                                <template name="model" var="items">
+                                    <comboitem label="@load(items)" value="@load(items)"/>
+                                </template>
+                            </combobox>
+                        </row>
+                    </rows>
+                </grid>
+            </groupbox>
+      
+            <separator height="10px"/>
+            <groupbox width="600px" contentStyle="border:1;">
+                <grid style="border:0">
+                    <columns>
+                        <column width="50%"></column>
+                        <column width="25%" align="right"></column>
+                        <column width="25%" align="right"></column>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label></label>
+                            <button label="Kembali" mold="trendy" width="100px" onClick="@command('buttonCancel')"/>
+                            <button label="Simpan" mold="trendy" width="120px" onClick="@command('buttonSaveTicket')"/>
+                        </row>
+                    </rows>
+                </grid>
+                
+            </groupbox>
+
+        </groupbox>
+        <separator height="30px"/>
+    </window>
+</zk>

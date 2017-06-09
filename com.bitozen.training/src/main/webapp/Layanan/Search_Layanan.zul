@@ -1,0 +1,47 @@
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window>
+        <groupbox closable="false" mold="3d">
+            <caption label="Form Layanan" />
+            <groupbox>
+                <caption label="Parameter Pencarian" />
+                <grid>
+                    <columns>
+                        <column width="15%" />
+                        <column width="30%" />
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="ID Layanan" />
+                            <textbox width="100%"/>
+                        </row>
+                        <row>
+                            <label value="Nama Layanan" />
+                            <textbox width="100%"/>
+                        </row>
+                        <row>
+                            <label value="Status Layanan" />
+                            <combobox width="100%" readonly="true" placeholder="- Silahkan Pilih -">
+                                <template name="model" var="items">
+                                    <comboitem label="@load(items)" value="@load(items)"/>
+                                </template>
+                            </combobox>
+                        </row>
+                        <row>
+                            <cell></cell>
+                            <cell align="left">
+                                <button width="40%" label="Pencarian" mold="trendy" autodisable="self"/>
+                                <space width="10px"></space>
+                                <button width="53%" label="Membuat Layanan" mold="trendy" autodisable="self"/>
+                            </cell>
+                            <cell colspan="2"></cell> 
+                        </row>
+                    </rows>
+                </grid>
+                <separator></separator>
+            </groupbox>
+            
+            <groupbox closable="true">
+            
+        </groupbox>
+    </window>
+</zk>

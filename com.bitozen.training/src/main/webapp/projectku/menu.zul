@@ -1,0 +1,39 @@
+<?page id="workspace" title="App Point Of Sale"?>
+<zk>
+    <window>
+        <style src="/widgets/menu/navbar/style.css"/>
+        <groupbox closable="false">
+            <div id="container" sclass="vertical" apply="org.zkoss.bind.BindComposer"
+                 viewModel="@id('vm') @init('demo.menu.navbar.NavigationViewModel')">
+                <navbar id="navbar" orient="horizontal" collapsed="false"
+                        onSelect="@command('navigatePage', target=self.selectedItem.attributes['navigationPage'])">
+                    <nav label="Dashboard" iconSclass="z-icon-home"
+                         children="@load(vm.pageMap[self.label].values()) @template('navitem')" width="150px"/>
+                    <nav label="Master Data" iconSclass="z-icon-group" badgeText="3"
+                         children="@load(vm.pageMap[self.label].values()) @template('navitem')" width="150px"/>
+                    <nav label="Transakasi" iconSclass="z-icon-truck" badgeText="4"
+                         children="@load(vm.pageMap[self.label].values()) @template('navitem')" width="150px"/>
+                    <nav label="Laporan" iconSclass="z-icon-star" badgeText="24"
+                         children="@load(vm.pageMap[self.label].values()) @template('navitem')" width="150px"/>
+                    <nav label="Tambah User" iconSclass="z-icon-star"
+                         children="@load(vm.pageMap[self.label].values()) @template('navitem')" width="100px"/>
+                    <nav label="Ganti Password" iconSclass="z-icon-star"
+                         children="@load(vm.pageMap[self.label].values()) @template('navitem')" width="100px"/>
+                    <nav label="LogOut" iconSclass="z-icon-star"
+                         children="@load(vm.pageMap[self.label].values()) @template('navitem')" width="100px"/>
+                    <template name="navitem" var="navigationPage">
+                        <navitem label="@load(navigationPage.subTitle)" selected="@load(navigationPage.selected)"/>
+                    </template>
+                </navbar>
+                <separator></separator>
+                <separator></separator>
+                <separator></separator>
+                <groupbox>
+                    <include id="contentInclude" mode="instant" sclass="content"
+                             currentPage="@ref(vm.currentPage)"
+                             src="@load(currentPage.includeUri)" />
+                </groupbox>
+            </div>
+        </groupbox>
+    </window>
+</zk>

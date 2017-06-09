@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+    <class mutable="true" name="com.bitozen.training.domain.model.pelayanan.Pelayanan" table="MST_PELAYANAN">
+        <!--<cache usage="read-only"/>-->
+        <id column="id" name="id">
+            <generator class="org.hibernate.id.IdentityGenerator"/>
+        </id>
+        <property column="layananID" name="layananID" not-null="false"/>
+        <property column="kelompokLayanan" name="kelompokLayanan" not-null="false"/>
+        <property column="namaLayanan" name="namaLayanan" not-null="false"/>
+        <property column="deskripsiLayanan" name="deskripsiLayanan" not-null="false"/>
+        <property column="startdate" name="startdate" not-null="false"/>
+        <property column="status" name="status" not-null="false">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.bitozen.training.common.status.PelayananStatus</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        <property column="createdDate" name="createdDate" not-null="false"/>
+        <property column="createdBy" name="createdBy" not-null="false"/>
+        <property column="modifiedDate" name="modifiedDate" not-null="false"/>
+        <property column="modifiedBy" name="modifiedBy" not-null="false"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,73 @@
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window>
+        <groupbox closable="false" mold="3d">
+            <caption label="App Point Of Sale" />
+            
+            <groupbox>
+                <grid>
+                    <columns>
+                        <column width="20%" align="center" height="75px"/>
+                        <column width="20%" align="center"/>
+                        <column width="20%" align="center"/>
+                        <column width="20%" align="center"/>
+                        <column width="20%" align="center"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="233" style="font-size:18pt"/>
+                            <label value="33" style="font-size:18pt"/>
+                            <label value="41" style="font-size:18pt"/>
+                            <label value="34" style="font-size:18pt"/>
+                            <label value="43" style="font-size:18pt"/>
+                        </row>
+                        <row>
+                            <label value="Jumlah Pelanggan" style="font-size:13pt"/>
+                            <label value="Jumlah Pemasok" style="font-size:13pt"/>
+                            <label value="Jumlah User" style="font-size:13pt"/>
+                            <label value="Jumlah Penjualan" style="font-size:13pt"/>
+                            <label value="Jumlah Pembelian" style="font-size:13pt"/>
+                        </row>
+                    </rows>
+                </grid>
+            </groupbox>
+            <separator></separator>
+            <separator></separator>
+            <separator></separator>
+            <groupbox>
+                <grid>
+                    <columns>
+                        <column width="20%" align="center" height="75px"/>
+                        <column width="20%" align="center"/>
+                        <column width="20%" align="center"/>
+                        <column width="20%" align="center"/>
+                        <column width="20%" align="center"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="4" style="font-size:18pt"/>
+                            <label value="4" style="font-size:18pt"/>
+                            <label value="133" style="font-size:18pt"/>
+                            <label value="" style="font-size:18pt"/>
+                            <label value="" style="font-size:18pt"/>
+                      
+                        </row>
+                        <row>
+                      
+                            <label value="Laporan Stock" style="font-size:13pt"/>
+                            <label value="Laporan Penjualan" style="font-size:13pt"/>
+                            <label value="Laporan Pembelian" style="font-size:13pt"/>
+                            <label value=""/>
+                            <label value=""/>
+                        </row>
+                    </rows>
+                </grid>
+            </groupbox>
+<!--            <groupbox vflex="true" closable="false" sclass="z-demo-config">
+                <caption label="Jumlah Pelanggan" />
+                <button label="Big Button" image="/images/customer.png" width="200px" height="200px" orient="vertical"
+                        dir="reverse" />
+                
+            </groupbox>-->
+        </groupbox>
+    </window>
+</zk>

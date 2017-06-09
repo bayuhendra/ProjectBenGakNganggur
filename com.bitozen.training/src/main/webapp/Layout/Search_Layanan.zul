@@ -1,0 +1,79 @@
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.bitozen.training.viewmodel.pelayanan.PelayananVM')"
+            form="@id('fx') @load(vm.pelayananDTO) @save(vm.pelayananDTO, before='buttonSavePelayanan')">
+        <groupbox closable="false" mold="3d">
+            <caption label="Form Layanan" />
+            <groupbox closable="false">
+                <caption label="Parameter Pencarian" />
+                <grid>
+                    <columns>
+                        <column width="15%" />
+                        <column width="30%" />
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="ID Layanan" />
+                            <textbox width="100%" value="@bind(vm.layananID)"/>
+                        </row>
+                        <row>
+                            <label value="Nama Layanan" />
+                            <textbox width="100%" value="@bind(vm.namaLayanan)"/>
+                        </row>
+                        <row>
+                            <label value="Status Layanan" />
+                            <combobox width="100%" readonly="true" placeholder="- Silahkan Pilih -" model="@load(vm.listStatusPelayanan)" selectedItem="@bind(vm.status)">
+                                <template name="model" var="items">
+                                    <comboitem label="@load(items)" value="@load(items)"/>
+                                </template>
+                            </combobox>
+                        </row>
+                        <row>
+                            <cell></cell>
+                            <cell align="left">
+                                <button width="40%" label="Pencarian" mold="trendy" onClick="@command('buttonPencarian')"/>
+                                <space width="10px"></space>
+                                <button width="53%" label="Membuat Layanan" mold="trendy" onClick="@command('buttonCreateLayanan')"/>
+                            </cell>
+                            <cell colspan="2"></cell> 
+                        </row>
+                    </rows>
+                </grid>
+                <separator></separator>
+            </groupbox>
+            <groupbox closable="false">
+                <paging forward="onPaging" />
+                <listbox rows="5" emptyMessage="${labels.common.noDataFound}" model="@bind(vm.pelayananDTOs)">
+                    <listhead>
+                        <listheader label="ID Layanan" width="15%" align="center"/>
+                        <listheader label="Kelompok Layanan" width="25%" align="center"/>
+                        <listheader label="Nama Layanan" width="25%" align="center"/>
+                        <listheader label="Deskripsi Layanan" width="30%" align="center"/>
+                        <listheader label="Aksi" width="10%" align="center"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem value="${each}">
+                            <listcell >
+                                <label width="100%" value="@bind(each.layananID)"/>
+                            </listcell>
+                            <listcell >
+                                <label width="100%" value="@bind(each.kelompokLayanan)"/>
+                            </listcell>
+                            <listcell >
+                                <label width="100%" value="@bind(each.namaLayanan)"/>
+                            </listcell>
+                            <listcell >
+                                <label width="100%" value="@bind(each.deskripsiLayanan)"/>
+                            </listcell>
+                            <listcell>
+                                <a label="Detail" style="text-decoration:underline ;color:blue" onClick="@command('detailLayanan', object=each)"></a>
+                                <a label="|" style="font-size:12pt ;color:black"></a>
+                                <a label="Delete" style="text-decoration:underline ;color:blue" onClick="@command('deleteLayanan', object=each)"></a>
+                            </listcell>
+                        </listitem>
+                    </template>
+                </listbox>
+            </groupbox>
+        </groupbox>
+    </window>
+</zk>

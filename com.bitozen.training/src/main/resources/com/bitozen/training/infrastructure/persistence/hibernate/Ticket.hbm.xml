@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+    <class mutable="true" name="com.bitozen.training.domain.model.ticket.Ticket" table="MST_TICKET">
+        <!--<cache usage="read-only"/>-->
+        <id column="id" name="id">
+            <generator class="org.hibernate.id.IdentityGenerator"/>
+        </id>
+        <property column="ticketID" name="ticketID" not-null="false"/>
+        <property column="userID" name="userID" not-null="false"/>
+        <property column="typeTicket" name="typeTicket" not-null="true">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.bitozen.training.common.type.TypeTicket</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        <property column="tittleTicket" name="tittleTicket" not-null="false"/>
+        <property column="ticketDescription" name="ticketDescription" not-null="false"/>
+        <property column="attachmentDocument" name="attachmentDocument" not-null="false"/>
+        <property column="statusTicket" name="statusTicket" not-null="true">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.bitozen.training.common.status.StatusTicket</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        <property column="priority" name="priority" not-null="true">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.bitozen.training.common.type.Priority</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        <property column="ageTicket" name="ageTicket" not-null="false"/>
+        <property column="timeToResolved" name="timeToResolved" not-null="false"/>
+        <property column="createdDate" name="createdDate" not-null="false"/>
+        <property column="createdBy" name="createdBy" not-null="false"/>
+        <property column="modifiedDate" name="modifiedDate" not-null="false"/>
+        <property column="modifiedBy" name="modifiedBy" not-null="false"/>
+    </class>
+</hibernate-mapping>

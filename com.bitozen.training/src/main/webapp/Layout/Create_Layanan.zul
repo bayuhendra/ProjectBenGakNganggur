@@ -1,0 +1,70 @@
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.bitozen.training.viewmodel.pelayanan.PelayananVM')"
+            form="@id('fx') @load(vm.pelayananDTO) @save(vm.pelayananDTO, before='buttonSavePelayanan')">
+        <groupbox closable="false" mold="3d">
+            <caption label="Form Data Layanan"/>  
+            <groupbox width="600px">
+                <caption label="Membuat Layanan" style="font-size:16pt"/>
+                <grid style="border:0">
+                    <columns>
+                        <column width="35%"></column>
+                        <column ></column>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="Layanan ID"/>
+                            <textbox width="100%" disabled="false" value="@bind(fx.layananID)"/>
+                        </row>
+                        <row>
+                            <label value="Kelompok Layanan"/>
+                            <combobox width="100%" readonly="true" placeholder="- Silahkan Pilih -" model="@load(vm.listKelompokLayanan)" selectedItem="@bind(fx.kelompokLayanan)" >
+                                <template name="model" var="items">
+                                    <comboitem label="@load(items)" value="@load(items)"/>
+                                </template>
+                            </combobox>
+                        </row>
+                        <row>
+                            <label value="Nama Layanan"/>
+                            <textbox width="100%" disabled="false" value="@bind(fx.namaLayanan)"/>
+                        </row>
+                        <row>
+                            <label value="Deskripsi Layanan"/>
+                            <textbox rows="3" width="100%" value="@bind(fx.deskripsiLayanan)"/>
+                        </row>
+                        <row>
+                            <label value="Tanggal Mulai Berlaku"/>
+                            <datebox width="100%" format="long" value="@bind(fx.startdate)"/>
+                        </row>
+                        <row>
+                            <label value="Status Layanan"/>
+                            <combobox width="100%" readonly="true" placeholder="- Silahkan Pilih -" model="@load(vm.listStatusPelayanan)" selectedItem="@bind(fx.status)">
+                                <template name="model" var="items">
+                                    <comboitem label="@load(items)" value="@load(items)"/>
+                                </template>
+                            </combobox>
+                        </row>
+                    </rows>
+                </grid>
+            </groupbox>
+            <separator height="10px"/>
+            <groupbox width="600px" contentStyle="border:1;">
+                <grid style="border:0">
+                    <columns>
+                        <column width="50%"></column>
+                        <column width="25%" align="right"></column>
+                        <column width="25%" align="right"></column>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label></label>
+                            <button label="Kembali" mold="trendy" width="100px" onClick="@command('buttonCancel')"/>
+                            <button label="Simpan" mold="trendy" width="120px" onClick="@command('buttonSavePelayanan')"/>
+                        </row>
+                    </rows>
+                </grid>
+            </groupbox>
+        </groupbox>
+        <separator height="30px"/>
+    </window>
+</zk>
